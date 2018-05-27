@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleFinder", "PeopleFinder\PeopleFinder.csproj", "{437F59F5-2380-4190-B366-FD857079C048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleFinder.Web", "PeopleFinder.Web\PeopleFinder.Web.csproj", "{EBACB33C-49F4-46E9-991A-8BA0A808715C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleFinder.Data", "PeopleFinder.Data\PeopleFinder.Data.csproj", "{CADEC6C1-0421-46F2-BAEB-F8EFF36D6619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{437F59F5-2380-4190-B366-FD857079C048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{437F59F5-2380-4190-B366-FD857079C048}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{437F59F5-2380-4190-B366-FD857079C048}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{437F59F5-2380-4190-B366-FD857079C048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBACB33C-49F4-46E9-991A-8BA0A808715C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBACB33C-49F4-46E9-991A-8BA0A808715C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBACB33C-49F4-46E9-991A-8BA0A808715C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBACB33C-49F4-46E9-991A-8BA0A808715C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADEC6C1-0421-46F2-BAEB-F8EFF36D6619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADEC6C1-0421-46F2-BAEB-F8EFF36D6619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADEC6C1-0421-46F2-BAEB-F8EFF36D6619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADEC6C1-0421-46F2-BAEB-F8EFF36D6619}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
