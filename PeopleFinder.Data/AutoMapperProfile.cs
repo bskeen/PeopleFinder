@@ -18,8 +18,12 @@ namespace PeopleFinder.Data
             CreateMap<Interest, InterestDto>()
                 .ReverseMap();
 
+            CreateMap<Person, BasePersonDto>()
+                .ForMember(d => d.StateName, ms => ms.MapFrom(e => e.State.Name));
+
             CreateMap<Person, PersonDto>()
-                .ForMember(d => d.Interests, ms => ms.ResolveUsing<PersonInterestsResolver>());
+                .ForMember(d => d.Interests, ms => ms.ResolveUsing<PersonInterestsResolver>())
+                .ForMember(d => d.StateName, ms => ms.MapFrom(e => e.State.Name));
 
             CreateMap<PersonDto, Person>()
                 .ForMember(e => e.InterestLink, ms => ms.Ignore());

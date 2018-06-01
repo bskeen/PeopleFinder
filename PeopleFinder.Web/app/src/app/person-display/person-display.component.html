@@ -1,0 +1,38 @@
+<div *ngIf="selectedPerson" class="person-container">
+  <div class="picture grid-cell">
+      <img [src]="selectedPerson.pictureUrl" />
+  </div>
+  <div class="grid-cell label">
+    Name:
+  </div>
+  <div class="grid-cell data">
+    {{selectedPerson.name}}
+  </div>
+  <div class="grid-cell label">
+    Age:
+  </div>
+  <div class="grid-cell data">
+    {{selectedPerson.age}}
+  </div>
+  <div class="grid-cell label">
+    Address:
+  </div>
+  <div class="grid-cell data">
+    <div>
+      {{selectedPerson.streetAddress}}
+    </div>
+    <div>
+      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}
+    </div>
+  </div>
+  <div class="grid-cell label">
+    Interests:
+  </div>
+  <div class="grid-cell data">
+    <ul>
+      <li *ngFor="let interest of selectedPerson.interests">
+        {{interest.name}}
+      </li>
+    </ul>
+  </div>
+</div>

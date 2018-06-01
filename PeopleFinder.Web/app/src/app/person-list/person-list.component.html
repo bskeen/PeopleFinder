@@ -1,0 +1,7 @@
+<div #scrollWindow class="person-list-container">
+  <pf-person-list-item *ngFor="let person of people" [person]="person" (listItemSelected)="onItemSelected($event)" [currentSelectedID]="selectedID">
+  </pf-person-list-item>
+  <div class="spinner">
+    Spinner goes here
+  </div>
+</div>

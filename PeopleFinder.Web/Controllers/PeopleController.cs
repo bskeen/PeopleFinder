@@ -20,10 +20,16 @@ namespace PeopleFinder.Web.Controllers
         }
 
         [HttpGet]
-        public PaginatedResultsDto<PersonDto> Get(PersonOrderingDto ordering, PaginationDto pagination, string filter = null)
+        public PaginatedResultsDto<BasePersonDto> Get(PersonOrderingDto ordering, PaginationDto pagination, string filter = null)
         {
             
             return _peopleRepository.GetAllWithPaginationAndFiltering(filter, ordering, pagination);
+        }
+
+        [HttpGet("{id}")]
+        public PersonDto Get(int id)
+        {
+            return _peopleRepository.GetOne(id);
         }
 
         protected override void Dispose(bool disposing)

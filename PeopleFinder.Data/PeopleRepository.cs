@@ -11,18 +11,24 @@ using System.Text;
 
 namespace PeopleFinder.Data
 {
-    public class PeopleRepository : GenericRepository<Person, PersonDto>, IPeopleRepository
+    public class PeopleRepository : GenericRepository<Person, BasePersonDto>, IPeopleRepository
     {
         public PeopleRepository(PeopleFinderContext context, IMapper mapper)
             : base(context, mapper)
         {
         }
 
-        public PaginatedResultsDto<PersonDto> GetAllWithPaginationAndFiltering(string filter, PersonOrderingDto ordering, PaginationDto pagination)
+        protected override IQueryable<Person> GetEntities()
         {
-            IQueryable<Person> query = GetEntities()
+            return base.GetEntities()
                 .Include(p => p.InterestLink)
-                .ThenInclude(il => il.Interest);
+                    .ThenInclude(il => il.Interest)
+                .Include(p => p.State);
+        }
+
+        public PaginatedResultsDto<BasePersonDto> GetAllWithPaginationAndFiltering(string filter, PersonOrderingDto ordering, PaginationDto pagination)
+        {
+            IQueryable<Person> query = GetEntities();
             int returnedCount = 0;
             int totalResultsCount = 0;
 
@@ -46,17 +52,23 @@ namespace PeopleFinder.Data
 
             returnedCount = results.Count;
 
-            return new PaginatedResultsDto<PersonDto>
+            return new PaginatedResultsDto<BasePersonDto>
             {
                 ReturnedCount = returnedCount,
                 TotalResultsCount = totalResultsCount,
-                Results = Mapper.Map<IEnumerable<PersonDto>>(results)
+                Results = Mapper.Map<IEnumerable<BasePersonDto>>(results)
             };
+        }
+
+        public PersonDto GetOne(int id)
+        {
+            return Mapper.Map<PersonDto>(GetEntities().FirstOrDefault(p => p.ID == id));
         }
     }
 
-    public interface IPeopleRepository : IGenericRepository<PersonDto>
+    public interface IPeopleRepository : IGenericRepository<BasePersonDto>
     {
-        PaginatedResultsDto<PersonDto> GetAllWithPaginationAndFiltering(string filter, PersonOrderingDto ordering, PaginationDto pagination);
+        PaginatedResultsDto<BasePersonDto> GetAllWithPaginationAndFiltering(string filter, PersonOrderingDto ordering, PaginationDto pagination);
+        PersonDto GetOne(int id);
     }
 }

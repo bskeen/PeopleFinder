@@ -1,0 +1,12 @@
+.spinner {
+  visibility: hidden;
+}
+
+.person-list-container {
+  overflow-y: scroll;
+  position: absolute;
+  top: 4em;
+  bottom: 1em;
+  right: 0;
+  left: 0;
+}
