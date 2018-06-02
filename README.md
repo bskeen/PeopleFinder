@@ -17,4 +17,4 @@ The following things would make this project and the experience of searching for
 - A good design principle for user interfaces that is not included here is to help lead your user to what they need to do. I could add placeholder text to the search box and even some instructions to the person detail area (to help the user know what they need to do, e.g. "Enter a search here" or "Select a person to see more detail").
 - Some more animations might also be nice.
 - There are certain features that the server supports, but there is no support on the front end. For example, the server accepts query string parameters to sort the results by Name or Age, along with a sort direction (these default to Name and Ascending). There is also an endpoint for adjusting the delay time on the server, but there is no UI on the front end to access this.
-- A screen could be added to allow users to add users to the database.
+- A screen could be added to allow users to add people to the database.
