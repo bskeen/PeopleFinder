@@ -24,6 +24,30 @@ input[type="search"] {
   position: absolute;
   width: 33%;
   height: 100%;
+  z-index: 0;
+}
+
+.overlay {
+  width: 100%;
+  position: absolute;
+  top: 4em;
+  bottom: 1em;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  background-color: rgba(255,255,255,0.75);
+}
+
+.spinner-container {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+  z-index: 2;
 }
 
 .details-pane {

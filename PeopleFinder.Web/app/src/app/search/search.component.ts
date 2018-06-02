@@ -14,6 +14,7 @@ import { Person } from '../models/person';
 export class SearchComponent implements OnInit, OnDestroy {
 
   selectedPerson: PersonDetails = null;
+  selectedID: number = 0;
   peopleList: Person[] = [];
   unsubscribe = new Subject<any>();
   scroll: Subject<boolean>;
@@ -22,12 +23,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchTermsObservable: Observable<string>;
   bottomOfPageObservable;
   bottomOfPageSubscription;
-  listSpinnerState: boolean;
+  listSpinnerState: boolean = true;
 
   subscriptionFunction = people => {
     this.peopleList = people;
     this.listSpinnerState = false;
-    this.bottomOfPageObservable.subscribe(people => this.peopleList = people);
+    this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
   };
 
   constructor(private personService: PersonService)
@@ -45,7 +46,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   setupSearchTermsObservable() {
     this.searchTermsObservable = this.searchTerms.valueChanges.pipe(
       debounce(() => timer(1000)),
-      tap(value => this.listSpinnerState = true),
+      tap(value => {
+        this.listSpinnerState = true;
+        this.onItemSelected(0);
+      }),
       map(value => <string>value),
     );
 
@@ -57,10 +61,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   setupBottomOfPageObservable() {
     this.bottomOfPageObservable = this.scrollObservable.pipe(
+      first(),
       tap(value => this.listSpinnerState = true),
       switchMap(value => this.personService.getWithSearch(this.searchTerms.value)),
       takeUntil(this.unsubscribe),
-      takeUntil(this.searchTermsObservable)
+      takeUntil(this.searchTermsObservable),
     );
 
     this.bottomOfPageSubscription = this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
@@ -70,6 +75,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.personService.getByID(id).pipe(
       takeUntil(this.unsubscribe)
     ).subscribe(person => this.selectedPerson = person);
+
+    this.selectedID = id;
   }
 
   onScrollList = (value: boolean) => {

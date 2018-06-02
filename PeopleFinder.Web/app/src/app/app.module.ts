@@ -11,6 +11,7 @@ import { PersonListItemComponent } from './person-list-item/person-list-item.com
 import { PersonDisplayComponent } from './person-display/person-display.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     PersonListComponent,
     PersonListItemComponent,
-    PersonDisplayComponent
+    PersonDisplayComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

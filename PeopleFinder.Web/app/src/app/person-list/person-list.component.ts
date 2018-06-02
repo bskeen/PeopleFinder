@@ -29,8 +29,13 @@ export class PersonListComponent implements OnDestroy, AfterViewInit {
   @Output()
   scrollBottom = new EventEmitter<boolean>();
 
-  @Input()
   people: Person[] = [];
+
+  @Input('people')
+  set peopleList(people: Person[]) {
+    this.people = people;
+    this.selectedID = this.selectedID;
+  }
 
   @Input()
   scrollToBottom;
@@ -41,7 +46,8 @@ export class PersonListComponent implements OnDestroy, AfterViewInit {
 
   @ViewChild('scrollWindow') scrollEl: ElementRef;
 
-  public selectedID = 0;
+  @Input()
+  selectedID = 0;
 
   constructor(private elm: ElementRef) { }
 
@@ -85,8 +91,11 @@ export class PersonListComponent implements OnDestroy, AfterViewInit {
   }
 
   onItemSelected(id: number) {
-    this.selectedID = id;
     this.itemSelected.emit(id);
+  }
+
+  trackByIndex(index, item) {
+    return index;
   }
 
 }

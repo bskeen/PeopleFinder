@@ -3,7 +3,12 @@
     <div class="search-box">
       <input type="search" [formControl]="searchTerms" />
     </div>
-    <pf-person-list [people]="peopleList" [scrollToBottom]="onScrollList" (itemSelected)="onItemSelected($event)"></pf-person-list>
+    <pf-person-list [people]="peopleList" [scrollToBottom]="onScrollList" [selectedID]="selectedID" (itemSelected)="onItemSelected($event)"></pf-person-list>
+    <div class="overlay" *ngIf="listSpinnerState">
+    </div>
+    <div class="spinner-container" *ngIf="listSpinnerState">
+        <pf-spinner></pf-spinner>
+    </div>
   </div>
   <div class="details-pane">
     <pf-person-display [selectedPerson]="selectedPerson"></pf-person-display>

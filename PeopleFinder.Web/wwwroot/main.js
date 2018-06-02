@@ -158,12 +158,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _person_display_person_display_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./person-display/person-display.component */ "./src/app/person-display/person-display.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./spinner/spinner.component */ "./src/app/spinner/spinner.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -187,7 +189,8 @@ var AppModule = /** @class */ (function () {
                 _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__["PageNotFoundComponent"],
                 _person_list_person_list_component__WEBPACK_IMPORTED_MODULE_7__["PersonListComponent"],
                 _person_list_item_person_list_item_component__WEBPACK_IMPORTED_MODULE_8__["PersonListItemComponent"],
-                _person_display_person_display_component__WEBPACK_IMPORTED_MODULE_9__["PersonDisplayComponent"]
+                _person_display_person_display_component__WEBPACK_IMPORTED_MODULE_9__["PersonDisplayComponent"],
+                _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_12__["SpinnerComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -331,7 +334,7 @@ var PageNotFoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <div class=\"picture grid-cell\">\n      <img [src]=\"selectedPerson.pictureUrl\" />\n  </div>\n  <div class=\"grid-cell label\">\n    Name:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.name}}\n  </div>\n  <div class=\"grid-cell label\">\n    Age:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.age}}\n  </div>\n  <div class=\"grid-cell label\">\n    Address:\n  </div>\n  <div class=\"grid-cell data\">\n    <div>\n      {{selectedPerson.streetAddress}}\n    </div>\n    <div>\n      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}\n    </div>\n  </div>\n  <div class=\"grid-cell label\">\n    Interests:\n  </div>\n  <div class=\"grid-cell data\">\n    <ul>\n      <li *ngFor=\"let interest of selectedPerson.interests\">\n        {{interest.name}}\n      </li>\n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <div class=\"picture\">\n      <img [src]=\"selectedPerson.pictureUrl\" />\n  </div>\n  <div class=\"grid-cell label\">\n    Name:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.name}}\n  </div>\n  <div class=\"grid-cell label\">\n    Age:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.age}}\n  </div>\n  <div class=\"grid-cell label\">\n    Address:\n  </div>\n  <div class=\"grid-cell data\">\n    <div>\n      {{selectedPerson.streetAddress}}\n    </div>\n    <div>\n      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}\n    </div>\n  </div>\n  <div class=\"grid-cell label\">\n    Interests:\n  </div>\n  <div class=\"grid-cell data\">\n    <ul>\n      <li *ngFor=\"let interest of selectedPerson.interests\">\n        {{interest.name}}\n      </li>\n    </ul>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -572,7 +575,7 @@ var PersonListItemComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div #scrollWindow class=\"person-list-container\">\n  <pf-person-list-item *ngFor=\"let person of people\" [person]=\"person\" (listItemSelected)=\"onItemSelected($event)\" [currentSelectedID]=\"selectedID\">\n  </pf-person-list-item>\n  <div class=\"spinner\">\n    Spinner goes here\n  </div>\n</div>\n"
+module.exports = "<div #scrollWindow class=\"person-list-container\">\n  <pf-person-list-item *ngFor=\"let person of people; trackBy: trackByIndex\" [person]=\"person\" (listItemSelected)=\"onItemSelected($event)\" [currentSelectedID]=\"selectedID\">\n  </pf-person-list-item>\n  <!-- <div class=\"overlay\" *ngIf=\"\">\n    <pf-spinner>\n    </pf-spinner>\n  </div> -->\n</div>\n"
 
 /***/ }),
 
@@ -635,6 +638,14 @@ var PersonListComponent = /** @class */ (function () {
             return ((position.sT + position.cH) / position.sH) > (_this.scrollPercent / 100);
         };
     }
+    Object.defineProperty(PersonListComponent.prototype, "peopleList", {
+        set: function (people) {
+            this.people = people;
+            this.selectedID = this.selectedID;
+        },
+        enumerable: true,
+        configurable: true
+    });
     PersonListComponent.prototype.ngAfterViewInit = function () {
         this.registerScrollEvent();
     };
@@ -658,8 +669,10 @@ var PersonListComponent = /** @class */ (function () {
         });
     };
     PersonListComponent.prototype.onItemSelected = function (id) {
-        this.selectedID = id;
         this.itemSelected.emit(id);
+    };
+    PersonListComponent.prototype.trackByIndex = function (index, item) {
+        return index;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
@@ -670,9 +683,10 @@ var PersonListComponent = /** @class */ (function () {
         __metadata("design:type", Object)
     ], PersonListComponent.prototype, "scrollBottom", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array)
-    ], PersonListComponent.prototype, "people", void 0);
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('people'),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], PersonListComponent.prototype, "peopleList", null);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -681,6 +695,10 @@ var PersonListComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('scrollWindow'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
     ], PersonListComponent.prototype, "scrollEl", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PersonListComponent.prototype, "selectedID", void 0);
     PersonListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'pf-person-list',
@@ -703,7 +721,7 @@ var PersonListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\">\n    <div class=\"search-box\">\n      <input type=\"search\" [formControl]=\"searchTerms\" />\n    </div>\n    <pf-person-list [people]=\"peopleList\" [scrollToBottom]=\"onScrollList\" (itemSelected)=\"onItemSelected($event)\"></pf-person-list>\n  </div>\n  <div class=\"details-pane\">\n    <pf-person-display [selectedPerson]=\"selectedPerson\"></pf-person-display>\n  </div>\n</div>\n"
+module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\">\n    <div class=\"search-box\">\n      <input type=\"search\" [formControl]=\"searchTerms\" />\n    </div>\n    <pf-person-list [people]=\"peopleList\" [scrollToBottom]=\"onScrollList\" [selectedID]=\"selectedID\" (itemSelected)=\"onItemSelected($event)\"></pf-person-list>\n    <div class=\"overlay\" *ngIf=\"listSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"listSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n  <div class=\"details-pane\">\n    <pf-person-display [selectedPerson]=\"selectedPerson\"></pf-person-display>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -714,7 +732,7 @@ module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;\n  outline: none;\n  width: 100%; }\n\n.search-box {\n  margin: 0.5em;\n  margin-bottom: 1em;\n  border: 2px solid gray;\n  border-radius: 5px;\n  padding: 0.5em; }\n\n.search-container {\n  position: fixed;\n  width: 100%;\n  height: 100%; }\n\n.search-pane {\n  grid-area: \"search\";\n  position: absolute;\n  width: 33%;\n  height: 100%; }\n\n.details-pane {\n  position: absolute;\n  width: 67%;\n  height: 100%;\n  right: 0; }\n"
+module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;\n  outline: none;\n  width: 100%; }\n\n.search-box {\n  margin: 0.5em;\n  margin-bottom: 1em;\n  border: 2px solid gray;\n  border-radius: 5px;\n  padding: 0.5em; }\n\n.search-container {\n  position: fixed;\n  width: 100%;\n  height: 100%; }\n\n.search-pane {\n  grid-area: \"search\";\n  position: absolute;\n  width: 33%;\n  height: 100%;\n  z-index: 0; }\n\n.overlay {\n  width: 100%;\n  position: absolute;\n  top: 4em;\n  bottom: 1em;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.spinner-container {\n  width: 30px;\n  height: 30px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -15px;\n  margin-top: -15px;\n  z-index: 2; }\n\n.details-pane {\n  position: absolute;\n  width: 67%;\n  height: 100%;\n  right: 0; }\n"
 
 /***/ }),
 
@@ -752,12 +770,14 @@ var SearchComponent = /** @class */ (function () {
         var _this = this;
         this.personService = personService;
         this.selectedPerson = null;
+        this.selectedID = 0;
         this.peopleList = [];
         this.unsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.listSpinnerState = true;
         this.subscriptionFunction = function (people) {
             _this.peopleList = people;
             _this.listSpinnerState = false;
-            _this.bottomOfPageObservable.subscribe(function (people) { return _this.peopleList = people; });
+            _this.bottomOfPageObservable.subscribe(_this.subscriptionFunction);
         };
         this.onScrollList = function (value) {
             if (_this.scroll) {
@@ -774,17 +794,21 @@ var SearchComponent = /** @class */ (function () {
     };
     SearchComponent.prototype.setupSearchTermsObservable = function () {
         var _this = this;
-        this.searchTermsObservable = this.searchTerms.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounce"])(function () { return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(1000); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) { return _this.listSpinnerState = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (value) { return value; }));
+        this.searchTermsObservable = this.searchTerms.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounce"])(function () { return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(1000); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) {
+            _this.listSpinnerState = true;
+            _this.onItemSelected(0);
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (value) { return value; }));
         this.searchTermsObservable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (value) { return _this.personService.getWithSearch(value, true); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(this.subscriptionFunction);
     };
     SearchComponent.prototype.setupBottomOfPageObservable = function () {
         var _this = this;
-        this.bottomOfPageObservable = this.scrollObservable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) { return _this.listSpinnerState = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (value) { return _this.personService.getWithSearch(_this.searchTerms.value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.searchTermsObservable));
+        this.bottomOfPageObservable = this.scrollObservable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) { return _this.listSpinnerState = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (value) { return _this.personService.getWithSearch(_this.searchTerms.value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.searchTermsObservable));
         this.bottomOfPageSubscription = this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
     };
     SearchComponent.prototype.onItemSelected = function (id) {
         var _this = this;
         this.personService.getByID(id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (person) { return _this.selectedPerson = person; });
+        this.selectedID = id;
     };
     SearchComponent.prototype.ngOnDestroy = function () {
         this.unsubscribe.next(true);
@@ -874,6 +898,69 @@ var PersonService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], PersonService);
     return PersonService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/spinner/spinner.component.html":
+/*!************************************************!*\
+  !*** ./src/app/spinner/spinner.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"spinner\"></div>\n"
+
+/***/ }),
+
+/***/ "./src/app/spinner/spinner.component.scss":
+/*!************************************************!*\
+  !*** ./src/app/spinner/spinner.component.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".spinner {\n  border: 3px solid;\n  border-color: lightgray;\n  border-top-color: black;\n  border-radius: 50%;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-name: spin;\n          animation-name: spin;\n  -webkit-animation-timing-function: ease-in-out;\n          animation-timing-function: ease-in-out;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  width: 100%;\n  height: 100%; }\n\n@-webkit-keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n"
+
+/***/ }),
+
+/***/ "./src/app/spinner/spinner.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/spinner/spinner.component.ts ***!
+  \**********************************************/
+/*! exports provided: SpinnerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SpinnerComponent", function() { return SpinnerComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SpinnerComponent = /** @class */ (function () {
+    function SpinnerComponent() {
+    }
+    SpinnerComponent.prototype.ngOnInit = function () {
+    };
+    SpinnerComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'pf-spinner',
+            template: __webpack_require__(/*! ./spinner.component.html */ "./src/app/spinner/spinner.component.html"),
+            styles: [__webpack_require__(/*! ./spinner.component.scss */ "./src/app/spinner/spinner.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], SpinnerComponent);
+    return SpinnerComponent;
 }());
 
 
