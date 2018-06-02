@@ -271,7 +271,7 @@ var Person = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Oops! Looks like you made a wrong turn.</h1>\n<p>\n  <a [routerLink]=\"/\">Click here</a> to return to the main page.\n</p>\n"
+module.exports = "<h1>Oops! Looks like you made a wrong turn.</h1>\n<p>\n  <a routerLink=\"/\">Click here</a> to return to the main page.\n</p>\n"
 
 /***/ }),
 
