@@ -1,6 +1,6 @@
 .person-container {
   display: grid;
-  grid-template-columns: 10% 1fr 6fr;
+  grid-template-columns: 15% 1fr 6fr;
   grid-template-rows: auto;
   overflow: initial scroll;
   font-size: 1.5em;
@@ -10,6 +10,7 @@
   justify-self: stretch;
   align-self: stretch;
   grid-row: span 4;
+  margin: 1em;
 
   img {
     background-color: transparent;
@@ -34,4 +35,13 @@
 .grid-cell {
   margin: 0.5em 0.25em;
   padding: 0.5em;
+
+  ul {
+    margin: 0;
+  }
+}
+
+.no-interests {
+  font-style: italic;
+  color: gray;
 }

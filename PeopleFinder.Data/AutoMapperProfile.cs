@@ -23,7 +23,7 @@ namespace PeopleFinder.Data
 
             CreateMap<Person, PersonDto>()
                 .ForMember(d => d.Interests, ms => ms.ResolveUsing<PersonInterestsResolver>())
-                .ForMember(d => d.StateName, ms => ms.MapFrom(e => e.State.Name));
+                .ForMember(d => d.StateName, ms => ms.MapFrom(e => e.State.Abbreviation));
 
             CreateMap<PersonDto, Person>()
                 .ForMember(e => e.InterestLink, ms => ms.Ignore());

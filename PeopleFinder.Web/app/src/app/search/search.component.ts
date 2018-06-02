@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   bottomOfPageObservable;
   bottomOfPageSubscription;
   listSpinnerState: boolean = true;
+  detailsSpinnerState: boolean = false;
 
   subscriptionFunction = people => {
     this.peopleList = people;
@@ -72,9 +73,13 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   onItemSelected(id: number) {
+    this.detailsSpinnerState = true;
     this.personService.getByID(id).pipe(
       takeUntil(this.unsubscribe)
-    ).subscribe(person => this.selectedPerson = person);
+    ).subscribe(person => {
+      this.selectedPerson = person;
+      this.detailsSpinnerState = false;
+    });
 
     this.selectedID = id;
   }

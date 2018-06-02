@@ -29,10 +29,11 @@
     Interests:
   </div>
   <div class="grid-cell data">
-    <ul>
+    <ul *ngIf="selectedPerson.interests.length > 0">
       <li *ngFor="let interest of selectedPerson.interests">
         {{interest.name}}
       </li>
     </ul>
+    <span class="no-interests" *ngIf="selectedPerson.interests.length === 0">No interests found</span>
   </div>
 </div>

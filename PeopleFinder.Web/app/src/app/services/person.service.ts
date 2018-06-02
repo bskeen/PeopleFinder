@@ -51,6 +51,10 @@ export class PersonService {
   }
 
   getByID(id: number) : Observable<PersonDetails> {
+    if (id === 0) {
+      return of(<PersonDetails>null);
+    }
+
     return this.http.get<PersonDetails>(`/api/people/${id}`);
   }
 }

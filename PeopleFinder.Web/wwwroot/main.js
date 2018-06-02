@@ -271,7 +271,7 @@ var Person = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  page-not-found works!\n</p>\n"
+module.exports = "<h1>Oops! Looks like you made a wrong turn.</h1>\n<p>\n  <a [routerLink]=\"/\">Click here</a> to return to the main page.\n</p>\n"
 
 /***/ }),
 
@@ -334,7 +334,7 @@ var PageNotFoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <div class=\"picture\">\n      <img [src]=\"selectedPerson.pictureUrl\" />\n  </div>\n  <div class=\"grid-cell label\">\n    Name:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.name}}\n  </div>\n  <div class=\"grid-cell label\">\n    Age:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.age}}\n  </div>\n  <div class=\"grid-cell label\">\n    Address:\n  </div>\n  <div class=\"grid-cell data\">\n    <div>\n      {{selectedPerson.streetAddress}}\n    </div>\n    <div>\n      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}\n    </div>\n  </div>\n  <div class=\"grid-cell label\">\n    Interests:\n  </div>\n  <div class=\"grid-cell data\">\n    <ul>\n      <li *ngFor=\"let interest of selectedPerson.interests\">\n        {{interest.name}}\n      </li>\n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <div class=\"picture\">\n      <img [src]=\"selectedPerson.pictureUrl\" />\n  </div>\n  <div class=\"grid-cell label\">\n    Name:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.name}}\n  </div>\n  <div class=\"grid-cell label\">\n    Age:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.age}}\n  </div>\n  <div class=\"grid-cell label\">\n    Address:\n  </div>\n  <div class=\"grid-cell data\">\n    <div>\n      {{selectedPerson.streetAddress}}\n    </div>\n    <div>\n      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}\n    </div>\n  </div>\n  <div class=\"grid-cell label\">\n    Interests:\n  </div>\n  <div class=\"grid-cell data\">\n    <ul *ngIf=\"selectedPerson.interests.length > 0\">\n      <li *ngFor=\"let interest of selectedPerson.interests\">\n        {{interest.name}}\n      </li>\n    </ul>\n    <span class=\"no-interests\" *ngIf=\"selectedPerson.interests.length === 0\">No interests found</span>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -345,7 +345,7 @@ module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".person-container {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 10% 1fr 6fr;\n      grid-template-columns: 10% 1fr 6fr;\n  -ms-grid-rows: auto;\n      grid-template-rows: auto;\n  overflow: initial scroll;\n  font-size: 1.5em; }\n\n.picture {\n  -ms-grid-column-align: stretch;\n      justify-self: stretch;\n  -ms-grid-row-align: stretch;\n      align-self: stretch;\n  grid-row: span 4; }\n\n.picture img {\n    background-color: transparent;\n    -o-object-fit: contain;\n       object-fit: contain;\n    -o-object-position: 50% 0;\n       object-position: 50% 0;\n    width: 100%;\n    height: 100%; }\n\n.data {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: start;\n      justify-self: start; }\n\n.label {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: end;\n      justify-self: end;\n  font-weight: bold; }\n\n.grid-cell {\n  margin: 0.5em 0.25em;\n  padding: 0.5em; }\n"
+module.exports = ".person-container {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 15% 1fr 6fr;\n      grid-template-columns: 15% 1fr 6fr;\n  -ms-grid-rows: auto;\n      grid-template-rows: auto;\n  overflow: initial scroll;\n  font-size: 1.5em; }\n\n.picture {\n  -ms-grid-column-align: stretch;\n      justify-self: stretch;\n  -ms-grid-row-align: stretch;\n      align-self: stretch;\n  grid-row: span 4;\n  margin: 1em; }\n\n.picture img {\n    background-color: transparent;\n    -o-object-fit: contain;\n       object-fit: contain;\n    -o-object-position: 50% 0;\n       object-position: 50% 0;\n    width: 100%;\n    height: 100%; }\n\n.data {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: start;\n      justify-self: start; }\n\n.label {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: end;\n      justify-self: end;\n  font-weight: bold; }\n\n.grid-cell {\n  margin: 0.5em 0.25em;\n  padding: 0.5em; }\n\n.grid-cell ul {\n    margin: 0; }\n\n.no-interests {\n  font-style: italic;\n  color: gray; }\n"
 
 /***/ }),
 
@@ -721,7 +721,7 @@ var PersonListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\">\n    <div class=\"search-box\">\n      <input type=\"search\" [formControl]=\"searchTerms\" />\n    </div>\n    <pf-person-list [people]=\"peopleList\" [scrollToBottom]=\"onScrollList\" [selectedID]=\"selectedID\" (itemSelected)=\"onItemSelected($event)\"></pf-person-list>\n    <div class=\"overlay\" *ngIf=\"listSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"listSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n  <div class=\"details-pane\">\n    <pf-person-display [selectedPerson]=\"selectedPerson\"></pf-person-display>\n  </div>\n</div>\n"
+module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\">\n    <div class=\"search-box\">\n      <input type=\"search\" [formControl]=\"searchTerms\" />\n    </div>\n    <pf-person-list [people]=\"peopleList\" [scrollToBottom]=\"onScrollList\" [selectedID]=\"selectedID\" (itemSelected)=\"onItemSelected($event)\"></pf-person-list>\n    <div class=\"overlay\" *ngIf=\"listSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"listSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n  <div class=\"details-pane\">\n    <pf-person-display [selectedPerson]=\"selectedPerson\"></pf-person-display>\n    <div class=\"overlay details-overlay\" *ngIf=\"detailsSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"detailsSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -732,7 +732,7 @@ module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;\n  outline: none;\n  width: 100%; }\n\n.search-box {\n  margin: 0.5em;\n  margin-bottom: 1em;\n  border: 2px solid gray;\n  border-radius: 5px;\n  padding: 0.5em; }\n\n.search-container {\n  position: fixed;\n  width: 100%;\n  height: 100%; }\n\n.search-pane {\n  grid-area: \"search\";\n  position: absolute;\n  width: 33%;\n  height: 100%;\n  z-index: 0; }\n\n.overlay {\n  width: 100%;\n  position: absolute;\n  top: 4em;\n  bottom: 1em;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.spinner-container {\n  width: 30px;\n  height: 30px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -15px;\n  margin-top: -15px;\n  z-index: 2; }\n\n.details-pane {\n  position: absolute;\n  width: 67%;\n  height: 100%;\n  right: 0; }\n"
+module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;\n  outline: none;\n  width: 100%; }\n\n.search-box {\n  margin: 0.5em;\n  margin-bottom: 1em;\n  border: 2px solid gray;\n  border-radius: 5px;\n  padding: 0.5em; }\n\n.search-container {\n  position: fixed;\n  width: 100%;\n  height: 100%; }\n\n.search-pane {\n  grid-area: \"search\";\n  position: absolute;\n  width: 33%;\n  height: 100%;\n  z-index: 0; }\n\n.overlay {\n  width: 100%;\n  position: absolute;\n  top: 4em;\n  bottom: 1em;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.details-overlay {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.spinner-container {\n  width: 30px;\n  height: 30px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -15px;\n  margin-top: -15px;\n  z-index: 2; }\n\n.details-pane {\n  position: absolute;\n  width: 67%;\n  height: 100%;\n  right: 0; }\n"
 
 /***/ }),
 
@@ -774,6 +774,7 @@ var SearchComponent = /** @class */ (function () {
         this.peopleList = [];
         this.unsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.listSpinnerState = true;
+        this.detailsSpinnerState = false;
         this.subscriptionFunction = function (people) {
             _this.peopleList = people;
             _this.listSpinnerState = false;
@@ -807,7 +808,11 @@ var SearchComponent = /** @class */ (function () {
     };
     SearchComponent.prototype.onItemSelected = function (id) {
         var _this = this;
-        this.personService.getByID(id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (person) { return _this.selectedPerson = person; });
+        this.detailsSpinnerState = true;
+        this.personService.getByID(id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (person) {
+            _this.selectedPerson = person;
+            _this.detailsSpinnerState = false;
+        });
         this.selectedID = id;
     };
     SearchComponent.prototype.ngOnDestroy = function () {
@@ -889,6 +894,9 @@ var PersonService = /** @class */ (function () {
         }));
     };
     PersonService.prototype.getByID = function (id) {
+        if (id === 0) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(null);
+        }
         return this.http.get("/api/people/" + id);
     };
     PersonService = __decorate([

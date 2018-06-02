@@ -12,5 +12,10 @@
   </div>
   <div class="details-pane">
     <pf-person-display [selectedPerson]="selectedPerson"></pf-person-display>
+    <div class="overlay details-overlay" *ngIf="detailsSpinnerState">
+    </div>
+    <div class="spinner-container" *ngIf="detailsSpinnerState">
+        <pf-spinner></pf-spinner>
+    </div>
   </div>
 </div>
