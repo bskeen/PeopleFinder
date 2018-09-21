@@ -1,34 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { AngularMaterialModule } from './angular-material.module';
 import { SearchComponent } from './search/search.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PersonListComponent } from './person-list/person-list.component';
-import { PersonListItemComponent } from './person-list-item/person-list-item.component';
-import { PersonDisplayComponent } from './person-display/person-display.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    PageNotFoundComponent,
-    PersonListComponent,
-    PersonListItemComponent,
-    PersonDisplayComponent,
-    SpinnerComponent
+    PersonComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularMaterialModule,
     HttpClientModule,
+    AppRoutingModule,
     ReactiveFormsModule,
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

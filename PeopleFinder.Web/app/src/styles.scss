@@ -1,7 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./styles/variables.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+.mat-card.selectable-card {
+    @include mat-elevation-transition;
+    @include mat-elevation(0);
+    margin: 16px;
+
+    &:hover {
+        @include mat-elevation(8);
+    }
+}
 
 body {
-  font-family: Sans-Serif;
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+pf-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

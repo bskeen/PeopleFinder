@@ -1,0 +1,39 @@
+.grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 24px;
+    grid-auto-rows: auto;
+    align-content: start;
+    position: relative;
+    margin: 0 8px;
+    top: 40px;
+    width: 100%;
+    height: calc(100vh - 40px);
+    overflow-y: scroll;
+
+    img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 5px;
+    }
+}
+
+.label {
+    justify-self: right;
+    align-self: center;
+    margin: 0;
+    color: rgba(0,0,0,.54);
+}
+
+.value {
+    align-self: center;
+    margin: 0;
+}
+
+button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

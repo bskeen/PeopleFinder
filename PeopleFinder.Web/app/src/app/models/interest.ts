@@ -1,4 +1,4 @@
 export class Interest {
-  id: number;
-  name: string;
+    id: number;
+    name: string;
 }

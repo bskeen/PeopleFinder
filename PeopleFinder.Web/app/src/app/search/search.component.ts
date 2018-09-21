@@ -1,98 +1,121 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PersonDetails } from '../models/person-details';
-import { PersonService } from '../services/person.service';
-import { Subject, Observable, timer } from 'rxjs';
-import { takeUntil, share, debounce, tap, switchMap, map, first, filter } from 'rxjs/operators'
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Person } from '../models/person';
+import { PeopleService } from '../services/people.service';
+import { debounceTime, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { searchComponentAnimations } from './search.component.animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'pf-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations: searchComponentAnimations
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit {
 
-  selectedPerson: PersonDetails = null;
-  selectedID: number = 0;
-  peopleList: Person[] = [];
-  unsubscribe = new Subject<any>();
-  scroll: Subject<boolean>;
-  scrollObservable: Observable<boolean>;
-  searchTerms: FormControl;
-  searchTermsObservable: Observable<string>;
-  bottomOfPageObservable;
-  bottomOfPageSubscription;
-  listSpinnerState: boolean = true;
-  detailsSpinnerState: boolean = false;
-
-  subscriptionFunction = people => {
-    this.peopleList = people;
-    this.listSpinnerState = false;
-    this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
+  searchForm: FormGroup;
+  people: Person[];
+  selectedPerson: Person;
+  spinnerActive = false;
+  totalResults = 0;
+  pageSize = 10;
+  pageIndex = 0;
+  listClasses = {
+    'one-line-paginator': true,
+    'two-line-paginator': false
   };
 
-  constructor(private personService: PersonService)
-  {
-    this.scroll = new Subject<boolean>();
-    this.scrollObservable = this.scroll.asObservable();
-  }
+  @ViewChild('paginator')
+  paginatorEl: ElementRef;
+
+  private unsubscribe: Subject<any> = new Subject<any>();
+  private isDetailVisible = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private peopleService: PeopleService,
+    private breakpointObserver: BreakpointObserver,
+  ) { }
 
   ngOnInit() {
-    this.searchTerms = new FormControl();
-    this.setupSearchTermsObservable();
-    this.setupBottomOfPageObservable();
-  }
 
-  setupSearchTermsObservable() {
-    this.searchTermsObservable = this.searchTerms.valueChanges.pipe(
-      debounce(() => timer(1000)),
-      tap(value => {
-        this.listSpinnerState = true;
-        this.onItemSelected(0);
-      }),
-      map(value => <string>value),
-    );
+    this.initSearchForm();
 
-    this.searchTermsObservable.pipe(
-      switchMap(value => this.personService.getWithSearch(value, true)),
-      takeUntil(this.unsubscribe)
-    ).subscribe(this.subscriptionFunction);
-  }
-
-  setupBottomOfPageObservable() {
-    this.bottomOfPageObservable = this.scrollObservable.pipe(
-      first(),
-      tap(value => this.listSpinnerState = true),
-      switchMap(value => this.personService.getWithSearch(this.searchTerms.value)),
+    this.searchForm.valueChanges.pipe(
+      debounceTime(1000),
+      tap(() => this.spinnerActive = true),
+      switchMap(values => this.peopleService.getPeopleWithSearch(values.search, this.pageIndex * this.pageSize, this.pageSize)),
       takeUntil(this.unsubscribe),
-      takeUntil(this.searchTermsObservable),
-    );
-
-    this.bottomOfPageSubscription = this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
+    ).subscribe(results => {
+      this.spinnerActive = false;
+      this.people = results.results;
+      this.pageIndex = 0;
+      this.totalResults = results.totalResultsCount;
+      if (document.getElementById('paginator').offsetHeight === 56) {
+        this.listClasses["one-line-paginator"] = true;
+        this.listClasses["two-line-paginator"] = false;
+      }
+      else {
+        this.listClasses["one-line-paginator"] = false;
+        this.listClasses["two-line-paginator"] = true;
+      }
+    });
   }
 
-  onItemSelected(id: number) {
-    this.detailsSpinnerState = true;
-    this.personService.getByID(id).pipe(
+  initSearchForm() {
+    this.searchForm = this.fb.group({
+      search: ''
+    });
+  }
+
+  selectPerson(id: number) {
+    this.spinnerActive = true;
+    this.peopleService.getPersonDetail(id).pipe(
       takeUntil(this.unsubscribe)
     ).subscribe(person => {
       this.selectedPerson = person;
-      this.detailsSpinnerState = false;
-    });
-
-    this.selectedID = id;
+      this.spinnerActive = false;
+      this.isDetailVisible = true;
+    })
   }
 
-  onScrollList = (value: boolean) => {
-    if (this.scroll) {
-      this.scroll.next(value);
+  getComponentState() {
+    if (this.breakpointObserver.isMatched('(min-width: 600px)')) {
+      return this.isDetailVisible ? 'sidePanelSearch' : 'fullScreenSearch';
+    }
+    else {
+      return this.isDetailVisible ? 'fullScreenDetail' : 'fullScreenSearchMobile';
     }
   }
 
-  ngOnDestroy() {
-    this.unsubscribe.next(true);
-    this.unsubscribe.complete();
+  closeDetail() {
+    this.isDetailVisible = false;
+    this.selectedPerson = null;
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+
+    this.peopleService.getPeopleWithSearch(this.searchForm.value.search, this.pageIndex * this.pageSize, this.pageSize).pipe(
+      takeUntil(this.unsubscribe),
+    ).subscribe(results => {
+      this.spinnerActive = false;
+      this.people = results.results;
+      this.totalResults = results.totalResultsCount;
+      
+      if (document.getElementById('paginator').offsetHeight === 56) {
+        this.listClasses["one-line-paginator"] = true;
+        this.listClasses["two-line-paginator"] = false;
+      }
+      else {
+        this.listClasses["one-line-paginator"] = false;
+        this.listClasses["two-line-paginator"] = true;
+      }
+    });
   }
 
 }

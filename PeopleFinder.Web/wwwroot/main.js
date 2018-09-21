@@ -11,7 +11,7 @@ function webpackEmptyAsyncContext(req) {
 	// Here Promise.resolve().then() is used instead of new Promise() to prevent
 	// uncaught exception popping up in devtools
 	return Promise.resolve().then(function() {
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	});
@@ -20,6 +20,60 @@ webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
 webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
+
+/***/ }),
+
+/***/ "./src/app/angular-material.module.ts":
+/*!********************************************!*\
+  !*** ./src/app/angular-material.module.ts ***!
+  \********************************************/
+/*! exports provided: AngularMaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AngularMaterialModule", function() { return AngularMaterialModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var AngularMaterialModule = /** @class */ (function () {
+    function AngularMaterialModule() {
+    }
+    AngularMaterialModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatChipsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginatorModule"],
+            ],
+            exports: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatChipsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginatorModule"],
+            ]
+        })
+    ], AngularMaterialModule);
+    return AngularMaterialModule;
+}());
+
+
 
 /***/ }),
 
@@ -35,8 +89,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
-/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,23 +97,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
-
-
-var routes = [
-    {
-        path: 'search',
-        component: _search_search_component__WEBPACK_IMPORTED_MODULE_3__["SearchComponent"]
-    },
-    {
-        path: '',
-        redirectTo: '/search',
-        pathMatch: 'full'
-    },
-    {
-        path: '**',
-        component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_2__["PageNotFoundComponent"]
-    }
-];
+var routes = [];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -85,7 +121,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-body\">\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<!--<router-outlet></router-outlet>-->\n<pf-search></pf-search>\n"
 
 /***/ }),
 
@@ -96,7 +132,7 @@ module.exports = "<div class=\"main-body\">\n  <router-outlet></router-outlet>\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "pf-search {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  overflow: hidden; }\n"
 
 /***/ }),
 
@@ -120,7 +156,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'pf';
+        this.title = 'PeopleFinder';
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -147,18 +183,15 @@ var AppComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
-/* harmony import */ var _person_list_person_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./person-list/person-list.component */ "./src/app/person-list/person-list.component.ts");
-/* harmony import */ var _person_list_item_person_list_item_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./person-list-item/person-list-item.component */ "./src/app/person-list-item/person-list-item.component.ts");
-/* harmony import */ var _person_display_person_display_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./person-display/person-display.component */ "./src/app/person-display/person-display.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./spinner/spinner.component */ "./src/app/spinner/spinner.component.ts");
+/* harmony import */ var _angular_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./angular-material.module */ "./src/app/angular-material.module.ts");
+/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _person_person_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./person/person.component */ "./src/app/person/person.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -175,29 +208,23 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"],
-                _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__["PageNotFoundComponent"],
-                _person_list_person_list_component__WEBPACK_IMPORTED_MODULE_7__["PersonListComponent"],
-                _person_list_item_person_list_item_component__WEBPACK_IMPORTED_MODULE_8__["PersonListItemComponent"],
-                _person_display_person_display_component__WEBPACK_IMPORTED_MODULE_9__["PersonDisplayComponent"],
-                _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_12__["SpinnerComponent"]
+                _search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"],
+                _person_person_component__WEBPACK_IMPORTED_MODULE_9__["PersonComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["BrowserAnimationsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"]
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
+                _angular_material_module__WEBPACK_IMPORTED_MODULE_5__["AngularMaterialModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -205,40 +232,6 @@ var AppModule = /** @class */ (function () {
     ], AppModule);
     return AppModule;
 }());
-
-
-
-/***/ }),
-
-/***/ "./src/app/models/person-details.ts":
-/*!******************************************!*\
-  !*** ./src/app/models/person-details.ts ***!
-  \******************************************/
-/*! exports provided: PersonDetails */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonDetails", function() { return PersonDetails; });
-/* harmony import */ var _person__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./person */ "./src/app/models/person.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var PersonDetails = /** @class */ (function (_super) {
-    __extends(PersonDetails, _super);
-    function PersonDetails() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return PersonDetails;
-}(_person__WEBPACK_IMPORTED_MODULE_0__["Person"]));
 
 
 
@@ -264,39 +257,40 @@ var Person = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/page-not-found/page-not-found.component.html":
-/*!**************************************************************!*\
-  !*** ./src/app/page-not-found/page-not-found.component.html ***!
-  \**************************************************************/
+/***/ "./src/app/person/person.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/person/person.component.html ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Oops! Looks like you made a wrong turn.</h1>\n<p>\n  <a routerLink=\"/\">Click here</a> to return to the main page.\n</p>\n"
+module.exports = "<button *ngIf=\"person\" mat-icon-button (click)=\"onClose()\">\n  <mat-icon>close</mat-icon>\n</button>\n<div *ngIf=\"person\" class=\"grid-container mat-typography\">\n  <img [src]=\"person.pictureUrl\" class=\"label\" />\n  <h1 class=\"value\">\n    {{person.name}}\n  </h1>\n  <h3 class=\"label\">\n    Age:\n  </h3>\n  <h3 class=\"value\">\n    {{person.age}}\n  </h3>\n  <h3 class=\"label\">\n    Address:\n  </h3>\n  <h3 class=\"value\">\n    {{person.streetAddress}}, {{person.city}} {{person.stateName}} {{person.zip}}\n  </h3>\n  <h3 class=\"label\">\n    Interests:\n  </h3>\n  <mat-chip-list>\n    <mat-chip *ngFor=\"let interest of person.interests\">\n      {{interest.name}}\n    </mat-chip>\n  </mat-chip-list>\n</div>"
 
 /***/ }),
 
-/***/ "./src/app/page-not-found/page-not-found.component.scss":
-/*!**************************************************************!*\
-  !*** ./src/app/page-not-found/page-not-found.component.scss ***!
-  \**************************************************************/
+/***/ "./src/app/person/person.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/person/person.component.scss ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".grid-container {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-rows: auto;\n      grid-template-rows: auto;\n  -ms-grid-columns: 1fr 3fr;\n      grid-template-columns: 1fr 3fr;\n  grid-column-gap: 16px;\n  grid-row-gap: 24px;\n  grid-auto-rows: auto;\n  align-content: start;\n  position: relative;\n  margin: 0 8px;\n  top: 40px;\n  width: 100%;\n  height: calc(100vh - 40px);\n  overflow-y: scroll; }\n  .grid-container img {\n    max-width: 100px;\n    max-height: 100px;\n    border-radius: 5px; }\n  .label {\n  -ms-grid-column-align: right;\n      justify-self: right;\n  -ms-grid-row-align: center;\n      align-self: center;\n  margin: 0;\n  color: rgba(0, 0, 0, 0.54); }\n  .value {\n  -ms-grid-row-align: center;\n      align-self: center;\n  margin: 0; }\n  button {\n  position: absolute;\n  top: 0;\n  right: 0; }\n"
 
 /***/ }),
 
-/***/ "./src/app/page-not-found/page-not-found.component.ts":
-/*!************************************************************!*\
-  !*** ./src/app/page-not-found/page-not-found.component.ts ***!
-  \************************************************************/
-/*! exports provided: PageNotFoundComponent */
+/***/ "./src/app/person/person.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/person/person.component.ts ***!
+  \********************************************/
+/*! exports provided: PersonComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageNotFoundComponent", function() { return PageNotFoundComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonComponent", function() { return PersonComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_person__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/person */ "./src/app/models/person.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -307,409 +301,199 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var PageNotFoundComponent = /** @class */ (function () {
-    function PageNotFoundComponent() {
+
+var PersonComponent = /** @class */ (function () {
+    function PersonComponent() {
+        this.close = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    PageNotFoundComponent.prototype.ngOnInit = function () {
+    PersonComponent.prototype.ngOnInit = function () {
     };
-    PageNotFoundComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'pf-page-not-found',
-            template: __webpack_require__(/*! ./page-not-found.component.html */ "./src/app/page-not-found/page-not-found.component.html"),
-            styles: [__webpack_require__(/*! ./page-not-found.component.scss */ "./src/app/page-not-found/page-not-found.component.scss")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], PageNotFoundComponent);
-    return PageNotFoundComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/person-display/person-display.component.html":
-/*!**************************************************************!*\
-  !*** ./src/app/person-display/person-display.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"selectedPerson\" class=\"person-container\">\n  <div class=\"picture\">\n      <img [src]=\"selectedPerson.pictureUrl\" />\n  </div>\n  <div class=\"grid-cell label\">\n    Name:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.name}}\n  </div>\n  <div class=\"grid-cell label\">\n    Age:\n  </div>\n  <div class=\"grid-cell data\">\n    {{selectedPerson.age}}\n  </div>\n  <div class=\"grid-cell label\">\n    Address:\n  </div>\n  <div class=\"grid-cell data\">\n    <div>\n      {{selectedPerson.streetAddress}}\n    </div>\n    <div>\n      {{selectedPerson.city}}, {{selectedPerson.stateName}} {{selectedPerson.zip}}\n    </div>\n  </div>\n  <div class=\"grid-cell label\">\n    Interests:\n  </div>\n  <div class=\"grid-cell data\">\n    <ul *ngIf=\"selectedPerson.interests.length > 0\">\n      <li *ngFor=\"let interest of selectedPerson.interests\">\n        {{interest.name}}\n      </li>\n    </ul>\n    <span class=\"no-interests\" *ngIf=\"selectedPerson.interests.length === 0\">No interests found</span>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/person-display/person-display.component.scss":
-/*!**************************************************************!*\
-  !*** ./src/app/person-display/person-display.component.scss ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".person-container {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 15% 1fr 6fr;\n      grid-template-columns: 15% 1fr 6fr;\n  -ms-grid-rows: auto;\n      grid-template-rows: auto;\n  overflow: initial scroll;\n  font-size: 1.5em; }\n\n.picture {\n  -ms-grid-column-align: stretch;\n      justify-self: stretch;\n  -ms-grid-row-align: stretch;\n      align-self: stretch;\n  grid-row: span 4;\n  margin: 1em; }\n\n.picture img {\n    background-color: transparent;\n    -o-object-fit: contain;\n       object-fit: contain;\n    -o-object-position: 50% 0;\n       object-position: 50% 0;\n    width: 100%;\n    height: 100%; }\n\n.data {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: start;\n      justify-self: start; }\n\n.label {\n  -ms-grid-row-align: start;\n      align-self: start;\n  -ms-grid-column-align: end;\n      justify-self: end;\n  font-weight: bold; }\n\n.grid-cell {\n  margin: 0.5em 0.25em;\n  padding: 0.5em; }\n\n.grid-cell ul {\n    margin: 0; }\n\n.no-interests {\n  font-style: italic;\n  color: gray; }\n"
-
-/***/ }),
-
-/***/ "./src/app/person-display/person-display.component.ts":
-/*!************************************************************!*\
-  !*** ./src/app/person-display/person-display.component.ts ***!
-  \************************************************************/
-/*! exports provided: PersonDisplayComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonDisplayComponent", function() { return PersonDisplayComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _models_person_details__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/person-details */ "./src/app/models/person-details.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var PersonDisplayComponent = /** @class */ (function () {
-    function PersonDisplayComponent() {
-        this.selectedPerson = null;
-    }
-    PersonDisplayComponent.prototype.ngOnInit = function () {
+    PersonComponent.prototype.onClose = function () {
+        this.close.emit(true);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _models_person_details__WEBPACK_IMPORTED_MODULE_1__["PersonDetails"])
-    ], PersonDisplayComponent.prototype, "selectedPerson", void 0);
-    PersonDisplayComponent = __decorate([
+        __metadata("design:type", _models_person__WEBPACK_IMPORTED_MODULE_1__["Person"])
+    ], PersonComponent.prototype, "person", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], PersonComponent.prototype, "close", void 0);
+    PersonComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'pf-person-display',
-            template: __webpack_require__(/*! ./person-display.component.html */ "./src/app/person-display/person-display.component.html"),
-            styles: [__webpack_require__(/*! ./person-display.component.scss */ "./src/app/person-display/person-display.component.scss")]
+            selector: 'pf-person',
+            template: __webpack_require__(/*! ./person.component.html */ "./src/app/person/person.component.html"),
+            styles: [__webpack_require__(/*! ./person.component.scss */ "./src/app/person/person.component.scss")]
         }),
         __metadata("design:paramtypes", [])
-    ], PersonDisplayComponent);
-    return PersonDisplayComponent;
+    ], PersonComponent);
+    return PersonComponent;
 }());
 
 
 
 /***/ }),
 
-/***/ "./src/app/person-list-item/person-list-item.animations.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/person-list-item/person-list-item.animations.ts ***!
-  \*****************************************************************/
-/*! exports provided: HoverAnimations */
+/***/ "./src/app/search/search.component.animations.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/search/search.component.animations.ts ***!
+  \*******************************************************/
+/*! exports provided: searchComponentAnimations */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HoverAnimations", function() { return HoverAnimations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchComponentAnimations", function() { return searchComponentAnimations; });
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 
-var animation = '0.25s ease-out';
-var styleDefault = {
-    boxShadow: "0px 0px 0px 0px rgba(0,0,0,.2), 0px 0px 0px 0px rgba(0,0,0,.14), 0px 0px 0px 0px rgba(0,0,0,.12)",
-};
-var styleHover = {
-    boxShadow: "0px 5px 5px -3px rgba(0,0,0,.2), 0px 8px 10px 1px rgba(0,0,0,.14), 0px 3px 14px 2px rgba(0,0,0,.12)",
-};
-var styleSelected = {
-    boxShadow: styleHover.boxShadow,
-    backgroundColor: '#d3d3d3',
-    color: '#1976d2',
-};
-var HoverAnimations = [
-    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('hover', [
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(styleDefault)),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('default', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(styleDefault)),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('hover', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(styleHover)),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('selected', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(styleSelected)),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('* => hover', [
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animation)
+var searchComponentAnimations = [
+    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('sidePanel', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenSearch', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%'
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('sidePanelSearch', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '30%'
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenSearchMobile', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%'
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenDetail', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: 0
+        }))
+    ]),
+    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('detailPanel', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenSearch', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            width: 0,
+            top: 0,
+            left: '100%'
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('sidePanelSearch', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            width: '70%',
+            top: 0,
+            left: '30%'
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenSearchMobile', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: '100%',
+            width: 0
+        })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('fullScreenDetail', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%'
+        }))
+    ]),
+    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('componentAnimations', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('fullScreenSearch => sidePanelSearch', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'relative' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                width: '70%',
+                top: 0,
+                left: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["group"])([
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ width: '30%' }))
+                ]),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: '30%' }))
+                ])
+            ])
         ]),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('* => selected', [
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animation)
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('sidePanelSearch => fullScreenSearch', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'relative' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '30%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                width: '70%',
+                top: 0,
+                left: '30%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["group"])([
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ width: '100%' }))
+                ]),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: '100%' }))
+                ])
+            ])
         ]),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('* => default', [
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animation)
-        ])
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('fullScreenSearchMobile => fullScreenDetail', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'relative' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                width: '100%',
+                top: 0,
+                left: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["group"])([
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: '-100%' }))
+                ]),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: 0 }))
+                ])
+            ])
+        ]),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('fullScreenDetail => fullScreenSearchMobile', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'relative' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                top: 0,
+                left: '-100%',
+                width: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%'
+            })),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["group"])([
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@sidePanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: 0 }))
+                ]),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])('@detailPanel', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('300ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ left: '100%' }))
+                ])
+            ])
+        ]),
     ])
 ];
-
-
-/***/ }),
-
-/***/ "./src/app/person-list-item/person-list-item.component.html":
-/*!******************************************************************!*\
-  !*** ./src/app/person-list-item/person-list-item.component.html ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"list-item\" [@hover]=\"state\">\n  <div class=\"list-detail name\">\n    {{person.name}}\n  </div>\n  <div class=\"list-detail address\">\n    {{person.city}}, {{person.stateName}}\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/person-list-item/person-list-item.component.scss":
-/*!******************************************************************!*\
-  !*** ./src/app/person-list-item/person-list-item.component.scss ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".list-item {\n  border: 1px solid gray;\n  border-radius: 5px;\n  margin: 0.5em;\n  background: white;\n  padding: 0.5em; }\n\n.list-detail {\n  width: 100%;\n  margin: 0.5em; }\n\n.name {\n  font-weight: bold; }\n\n.address {\n  color: gray;\n  font-style: italic; }\n"
-
-/***/ }),
-
-/***/ "./src/app/person-list-item/person-list-item.component.ts":
-/*!****************************************************************!*\
-  !*** ./src/app/person-list-item/person-list-item.component.ts ***!
-  \****************************************************************/
-/*! exports provided: PersonListItemComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonListItemComponent", function() { return PersonListItemComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _person_list_item_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person-list-item.animations */ "./src/app/person-list-item/person-list-item.animations.ts");
-/* harmony import */ var _models_person__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/person */ "./src/app/models/person.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var PersonListItemComponent = /** @class */ (function () {
-    function PersonListItemComponent() {
-        this.selected = false;
-        this.listItemSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.state = 'default';
-    }
-    PersonListItemComponent.prototype.onEnter = function () {
-        if (!this.selected) {
-            this.state = 'hover';
-        }
-    };
-    PersonListItemComponent.prototype.onExit = function () {
-        if (!this.selected) {
-            this.state = 'default';
-        }
-    };
-    PersonListItemComponent.prototype.onClick = function () {
-        this.listItemSelected.emit(this.person.id);
-    };
-    Object.defineProperty(PersonListItemComponent.prototype, "currentSelectedID", {
-        set: function (id) {
-            this.selected = id === this.person.id;
-            if (this.selected) {
-                this.state = 'selected';
-            }
-            else if (this.state === 'selected') {
-                this.state = 'default';
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _models_person__WEBPACK_IMPORTED_MODULE_2__["Person"])
-    ], PersonListItemComponent.prototype, "person", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], PersonListItemComponent.prototype, "listItemSelected", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('mouseenter'),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", void 0)
-    ], PersonListItemComponent.prototype, "onEnter", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('mouseleave'),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", void 0)
-    ], PersonListItemComponent.prototype, "onExit", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('click'),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", void 0)
-    ], PersonListItemComponent.prototype, "onClick", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('currentSelectedID'),
-        __metadata("design:type", Number),
-        __metadata("design:paramtypes", [Number])
-    ], PersonListItemComponent.prototype, "currentSelectedID", null);
-    PersonListItemComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'pf-person-list-item',
-            template: __webpack_require__(/*! ./person-list-item.component.html */ "./src/app/person-list-item/person-list-item.component.html"),
-            styles: [__webpack_require__(/*! ./person-list-item.component.scss */ "./src/app/person-list-item/person-list-item.component.scss")],
-            animations: _person_list_item_animations__WEBPACK_IMPORTED_MODULE_1__["HoverAnimations"]
-        }),
-        __metadata("design:paramtypes", [])
-    ], PersonListItemComponent);
-    return PersonListItemComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/person-list/person-list.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/person-list/person-list.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div #scrollWindow class=\"person-list-container\">\n  <pf-person-list-item *ngFor=\"let person of people; trackBy: trackByIndex\" [person]=\"person\" (listItemSelected)=\"onItemSelected($event)\" [currentSelectedID]=\"selectedID\">\n  </pf-person-list-item>\n  <!-- <div class=\"overlay\" *ngIf=\"\">\n    <pf-spinner>\n    </pf-spinner>\n  </div> -->\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/person-list/person-list.component.scss":
-/*!********************************************************!*\
-  !*** ./src/app/person-list/person-list.component.scss ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".spinner {\n  visibility: hidden; }\n\n.person-list-container {\n  overflow-y: scroll;\n  position: absolute;\n  top: 4em;\n  bottom: 1em;\n  right: 0;\n  left: 0; }\n"
-
-/***/ }),
-
-/***/ "./src/app/person-list/person-list.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/person-list/person-list.component.ts ***!
-  \******************************************************/
-/*! exports provided: PersonListComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonListComponent", function() { return PersonListComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-;
-var DEFAULT_SCROLL_POSITION = {
-    sH: 0,
-    sT: 0,
-    cH: 0
-};
-var PersonListComponent = /** @class */ (function () {
-    function PersonListComponent(elm) {
-        var _this = this;
-        this.elm = elm;
-        this.itemSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.scrollBottom = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.people = [];
-        this.unsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.scrollPercent = 70;
-        this.selectedID = 0;
-        this.isUserScrollingDown = function (positions) {
-            return positions[0].sT < positions[1].sT;
-        };
-        this.isScrollExpectedPercent = function (position) {
-            return ((position.sT + position.cH) / position.sH) > (_this.scrollPercent / 100);
-        };
-    }
-    Object.defineProperty(PersonListComponent.prototype, "peopleList", {
-        set: function (people) {
-            this.people = people;
-            this.selectedID = this.selectedID;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PersonListComponent.prototype.ngAfterViewInit = function () {
-        this.registerScrollEvent();
-    };
-    PersonListComponent.prototype.ngOnDestroy = function () {
-        this.unsubscribe.next(false);
-        this.unsubscribe.complete();
-    };
-    PersonListComponent.prototype.registerScrollEvent = function () {
-        var _this = this;
-        this.scrollEvent = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(this.scrollEl.nativeElement, 'scroll').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (event) { return ({
-            sH: event.target.scrollHeight,
-            sT: event.target.scrollTop,
-            cH: event.target.clientHeight
-        }); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["pairwise"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (positions) {
-            return _this.isUserScrollingDown(positions)
-                && _this.isScrollExpectedPercent(positions[1]);
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])([DEFAULT_SCROLL_POSITION, DEFAULT_SCROLL_POSITION]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["exhaustMap"])(function (value) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(true); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.unsubscribe)).subscribe(function (value) {
-            if (_this.scrollToBottom) {
-                _this.scrollToBottom(value);
-            }
-        });
-    };
-    PersonListComponent.prototype.onItemSelected = function (id) {
-        this.itemSelected.emit(id);
-    };
-    PersonListComponent.prototype.trackByIndex = function (index, item) {
-        return index;
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], PersonListComponent.prototype, "itemSelected", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], PersonListComponent.prototype, "scrollBottom", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('people'),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], PersonListComponent.prototype, "peopleList", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], PersonListComponent.prototype, "scrollToBottom", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('scrollWindow'),
-        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
-    ], PersonListComponent.prototype, "scrollEl", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], PersonListComponent.prototype, "selectedID", void 0);
-    PersonListComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'pf-person-list',
-            template: __webpack_require__(/*! ./person-list.component.html */ "./src/app/person-list/person-list.component.html"),
-            styles: [__webpack_require__(/*! ./person-list.component.scss */ "./src/app/person-list/person-list.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
-    ], PersonListComponent);
-    return PersonListComponent;
-}());
-
 
 
 /***/ }),
@@ -721,7 +505,7 @@ var PersonListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\">\n    <div class=\"search-box\">\n      <input type=\"search\" [formControl]=\"searchTerms\" />\n    </div>\n    <pf-person-list [people]=\"peopleList\" [scrollToBottom]=\"onScrollList\" [selectedID]=\"selectedID\" (itemSelected)=\"onItemSelected($event)\"></pf-person-list>\n    <div class=\"overlay\" *ngIf=\"listSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"listSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n  <div class=\"details-pane\">\n    <pf-person-display [selectedPerson]=\"selectedPerson\"></pf-person-display>\n    <div class=\"overlay details-overlay\" *ngIf=\"detailsSpinnerState\">\n    </div>\n    <div class=\"spinner-container\" *ngIf=\"detailsSpinnerState\">\n        <pf-spinner></pf-spinner>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div [@componentAnimations]=\"getComponentState()\" class=\"content-container\">\n  <div [@sidePanel]=\"getComponentState()\">\n    <form color=\"primary\" [formGroup]=\"searchForm\">\n      <mat-form-field>\n        <input matInput placeholder=\"Search...\" type=\"search\" formControlName=\"search\" />\n      </mat-form-field>\n      <mat-paginator [id]=\"'paginator'\" [length]=\"totalResults\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"[10, 25, 50, 100]\" [pageIndex]=\"pageIndex\" (page)=\"handlePageEvent($event)\"></mat-paginator>\n    </form>\n    <section name=\"card-list\" [ngClass]=\"listClasses\" *ngIf=\"getComponentState() !== 'fullScreenDetail'\">\n      <mat-card *ngFor=\"let person of people\" class=\"selectable-card\" (click)=\"selectPerson(person.id)\">\n        <mat-card-title>\n          {{person.name}}\n        </mat-card-title>\n        <mat-card-subtitle>\n          {{person.city}}, {{person.stateName}}\n        </mat-card-subtitle>\n      </mat-card>\n    </section>\n  </div>\n  <pf-person [person]=\"selectedPerson\" (close)=\"closeDetail()\" [@detailPanel]=\"getComponentState()\">\n  </pf-person>\n</div>\n<div class=\"spinner-overlay\" *ngIf=\"spinnerActive\">\n  <mat-spinner></mat-spinner>\n</div>\n\n"
 
 /***/ }),
 
@@ -732,7 +516,7 @@ module.exports = "<div class=\"search-container\">\n  <div class=\"search-pane\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;\n  outline: none;\n  width: 100%; }\n\n.search-box {\n  margin: 0.5em;\n  margin-bottom: 1em;\n  border: 2px solid gray;\n  border-radius: 5px;\n  padding: 0.5em; }\n\n.search-container {\n  position: fixed;\n  width: 100%;\n  height: 100%; }\n\n.search-pane {\n  grid-area: \"search\";\n  position: absolute;\n  width: 33%;\n  height: 100%;\n  z-index: 0; }\n\n.overlay {\n  width: 100%;\n  position: absolute;\n  top: 4em;\n  bottom: 1em;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.details-overlay {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  background-color: rgba(255, 255, 255, 0.75); }\n\n.spinner-container {\n  width: 30px;\n  height: 30px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -15px;\n  margin-top: -15px;\n  z-index: 2; }\n\n.details-pane {\n  position: absolute;\n  width: 67%;\n  height: 100%;\n  right: 0; }\n"
+module.exports = "mat-form-field {\n  width: calc(100% - 32px);\n  padding: 16px;\n  min-width: 0px; }\n  mat-form-field input {\n    width: 100%;\n    margin: 0;\n    min-width: 0; }\n  form {\n  width: 100%;\n  margin: 0 auto; }\n  section {\n  position: relative;\n  width: 100%;\n  margin: 0 auto;\n  height: calc(100vh - 153.5px);\n  overflow-y: scroll; }\n  section.two-line-paginator {\n    height: calc(100vh - 200.125px); }\n  div.content-container {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0; }\n  div.spinner-overlay {\n  background-color: rgba(255, 255, 255, 0.7);\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n  @media (min-width: 600px) {\n  mat-card {\n    max-width: 560px; }\n  mat-form-field {\n    max-width: 608px; }\n  section, form {\n    max-width: 608px; } }\n"
 
 /***/ }),
 
@@ -747,10 +531,12 @@ module.exports = "input[type=\"search\"] {\n  background: none;\n  border: none;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_person_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/person.service */ "./src/app/services/person.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _services_people_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/people.service */ "./src/app/services/people.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _search_component_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search.component.animations */ "./src/app/search/search.component.animations.ts");
+/* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm5/layout.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -765,67 +551,100 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent(personService) {
-        var _this = this;
-        this.personService = personService;
-        this.selectedPerson = null;
-        this.selectedID = 0;
-        this.peopleList = [];
-        this.unsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.listSpinnerState = true;
-        this.detailsSpinnerState = false;
-        this.subscriptionFunction = function (people) {
-            _this.peopleList = people;
-            _this.listSpinnerState = false;
-            _this.bottomOfPageObservable.subscribe(_this.subscriptionFunction);
+    function SearchComponent(fb, peopleService, breakpointObserver) {
+        this.fb = fb;
+        this.peopleService = peopleService;
+        this.breakpointObserver = breakpointObserver;
+        this.spinnerActive = false;
+        this.totalResults = 0;
+        this.pageSize = 10;
+        this.pageIndex = 0;
+        this.listClasses = {
+            'one-line-paginator': true,
+            'two-line-paginator': false
         };
-        this.onScrollList = function (value) {
-            if (_this.scroll) {
-                _this.scroll.next(value);
-            }
-        };
-        this.scroll = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.scrollObservable = this.scroll.asObservable();
+        this.unsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        this.isDetailVisible = false;
     }
     SearchComponent.prototype.ngOnInit = function () {
-        this.searchTerms = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]();
-        this.setupSearchTermsObservable();
-        this.setupBottomOfPageObservable();
-    };
-    SearchComponent.prototype.setupSearchTermsObservable = function () {
         var _this = this;
-        this.searchTermsObservable = this.searchTerms.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounce"])(function () { return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["timer"])(1000); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) {
-            _this.listSpinnerState = true;
-            _this.onItemSelected(0);
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (value) { return value; }));
-        this.searchTermsObservable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (value) { return _this.personService.getWithSearch(value, true); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(this.subscriptionFunction);
-    };
-    SearchComponent.prototype.setupBottomOfPageObservable = function () {
-        var _this = this;
-        this.bottomOfPageObservable = this.scrollObservable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (value) { return _this.listSpinnerState = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (value) { return _this.personService.getWithSearch(_this.searchTerms.value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.searchTermsObservable));
-        this.bottomOfPageSubscription = this.bottomOfPageObservable.subscribe(this.subscriptionFunction);
-    };
-    SearchComponent.prototype.onItemSelected = function (id) {
-        var _this = this;
-        this.detailsSpinnerState = true;
-        this.personService.getByID(id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (person) {
-            _this.selectedPerson = person;
-            _this.detailsSpinnerState = false;
+        this.initSearchForm();
+        this.searchForm.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(1000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function () { return _this.spinnerActive = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (values) { return _this.peopleService.getPeopleWithSearch(values.search, _this.pageIndex * _this.pageSize, _this.pageSize); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (results) {
+            _this.spinnerActive = false;
+            _this.people = results.results;
+            _this.pageIndex = 0;
+            _this.totalResults = results.totalResultsCount;
+            if (document.getElementById('paginator').offsetHeight === 56) {
+                _this.listClasses["one-line-paginator"] = true;
+                _this.listClasses["two-line-paginator"] = false;
+            }
+            else {
+                _this.listClasses["one-line-paginator"] = false;
+                _this.listClasses["two-line-paginator"] = true;
+            }
         });
-        this.selectedID = id;
     };
-    SearchComponent.prototype.ngOnDestroy = function () {
-        this.unsubscribe.next(true);
-        this.unsubscribe.complete();
+    SearchComponent.prototype.initSearchForm = function () {
+        this.searchForm = this.fb.group({
+            search: ''
+        });
     };
+    SearchComponent.prototype.selectPerson = function (id) {
+        var _this = this;
+        this.spinnerActive = true;
+        this.peopleService.getPersonDetail(id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (person) {
+            _this.selectedPerson = person;
+            _this.spinnerActive = false;
+            _this.isDetailVisible = true;
+        });
+    };
+    SearchComponent.prototype.getComponentState = function () {
+        if (this.breakpointObserver.isMatched('(min-width: 600px)')) {
+            return this.isDetailVisible ? 'sidePanelSearch' : 'fullScreenSearch';
+        }
+        else {
+            return this.isDetailVisible ? 'fullScreenDetail' : 'fullScreenSearchMobile';
+        }
+    };
+    SearchComponent.prototype.closeDetail = function () {
+        this.isDetailVisible = false;
+        this.selectedPerson = null;
+    };
+    SearchComponent.prototype.handlePageEvent = function (event) {
+        var _this = this;
+        this.pageSize = event.pageSize;
+        this.pageIndex = event.pageIndex;
+        this.peopleService.getPeopleWithSearch(this.searchForm.value.search, this.pageIndex * this.pageSize, this.pageSize).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe)).subscribe(function (results) {
+            _this.spinnerActive = false;
+            _this.people = results.results;
+            _this.totalResults = results.totalResultsCount;
+            if (document.getElementById('paginator').offsetHeight === 56) {
+                _this.listClasses["one-line-paginator"] = true;
+                _this.listClasses["two-line-paginator"] = false;
+            }
+            else {
+                _this.listClasses["one-line-paginator"] = false;
+                _this.listClasses["two-line-paginator"] = true;
+            }
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('paginator'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], SearchComponent.prototype, "paginatorEl", void 0);
     SearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'pf-search',
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/search/search.component.html"),
-            styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/search/search.component.scss")]
+            styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/search/search.component.scss")],
+            animations: _search_component_animations__WEBPACK_IMPORTED_MODULE_5__["searchComponentAnimations"]
         }),
-        __metadata("design:paramtypes", [_services_person_service__WEBPACK_IMPORTED_MODULE_1__["PersonService"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _services_people_service__WEBPACK_IMPORTED_MODULE_2__["PeopleService"],
+            _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_6__["BreakpointObserver"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -834,20 +653,18 @@ var SearchComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/services/person.service.ts":
+/***/ "./src/app/services/people.service.ts":
 /*!********************************************!*\
-  !*** ./src/app/services/person.service.ts ***!
+  !*** ./src/app/services/people.service.ts ***!
   \********************************************/
-/*! exports provided: PersonService */
+/*! exports provided: PeopleService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonService", function() { return PersonService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PeopleService", function() { return PeopleService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -859,116 +676,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
-
-var PersonService = /** @class */ (function () {
-    function PersonService(http) {
+var PeopleService = /** @class */ (function () {
+    function PeopleService(http) {
         this.http = http;
-        this.currentPeople = [];
     }
-    PersonService.prototype.getWithSearch = function (searchTerms, refresh) {
-        var _this = this;
-        if (refresh === void 0) { refresh = false; }
-        if (!refresh && this.currentPeople.length === this.totalResults) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(this.currentPeople);
-        }
-        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]();
-        if (searchTerms) {
-            params = params.set('filter', searchTerms);
-        }
-        if (!refresh) {
-            params = params.set('skip', "" + this.currentPeople.length);
-        }
-        var options = {
-            params: params
-        };
-        return this.http.get('/api/people', options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
-            _this.totalResults = response.totalResultsCount;
-            if (refresh) {
-                _this.currentPeople = response.results;
+    PeopleService.prototype.getPeopleWithSearch = function (search, skip, take) {
+        return this.http.get("/api/People", {
+            params: {
+                filter: search,
+                skip: skip.toString(),
+                take: take.toString()
             }
-            else {
-                _this.currentPeople = _this.currentPeople.concat(response.results);
-            }
-            return _this.currentPeople;
-        }));
+        });
     };
-    PersonService.prototype.getByID = function (id) {
-        if (id === 0) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(null);
-        }
-        return this.http.get("/api/people/" + id);
+    PeopleService.prototype.getPersonDetail = function (id) {
+        return this.http.get("/api/People/" + id);
     };
-    PersonService = __decorate([
+    PeopleService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], PersonService);
-    return PersonService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/spinner/spinner.component.html":
-/*!************************************************!*\
-  !*** ./src/app/spinner/spinner.component.html ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"spinner\"></div>\n"
-
-/***/ }),
-
-/***/ "./src/app/spinner/spinner.component.scss":
-/*!************************************************!*\
-  !*** ./src/app/spinner/spinner.component.scss ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".spinner {\n  border: 3px solid;\n  border-color: lightgray;\n  border-top-color: black;\n  border-radius: 50%;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-name: spin;\n          animation-name: spin;\n  -webkit-animation-timing-function: ease-in-out;\n          animation-timing-function: ease-in-out;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  width: 100%;\n  height: 100%; }\n\n@-webkit-keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n"
-
-/***/ }),
-
-/***/ "./src/app/spinner/spinner.component.ts":
-/*!**********************************************!*\
-  !*** ./src/app/spinner/spinner.component.ts ***!
-  \**********************************************/
-/*! exports provided: SpinnerComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SpinnerComponent", function() { return SpinnerComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var SpinnerComponent = /** @class */ (function () {
-    function SpinnerComponent() {
-    }
-    SpinnerComponent.prototype.ngOnInit = function () {
-    };
-    SpinnerComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'pf-spinner',
-            template: __webpack_require__(/*! ./spinner.component.html */ "./src/app/spinner/spinner.component.html"),
-            styles: [__webpack_require__(/*! ./spinner.component.scss */ "./src/app/spinner/spinner.component.scss")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], SpinnerComponent);
-    return SpinnerComponent;
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], PeopleService);
+    return PeopleService;
 }());
 
 
@@ -992,10 +722,10 @@ var environment = {
     production: false
 };
 /*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
+ * In development mode, for easier debugging, you can ignore zone related error
+ * stack frames such as `zone.run`/`zoneDelegate.invokeTask` by importing the
+ * below file. Don't forget to comment it out in production mode
+ * because it will have a performance impact when errors are thrown
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
@@ -1035,7 +765,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\code\open-source\PeopleFinder\PeopleFinder.Web\app\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/benskeen/PeopleFinder/PeopleFinder.Web/app/src/main.ts */"./src/main.ts");
 
 
 /***/ })

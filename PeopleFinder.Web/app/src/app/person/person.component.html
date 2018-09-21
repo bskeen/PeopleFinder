@@ -1,0 +1,29 @@
+<button *ngIf="person" mat-icon-button (click)="onClose()">
+  <mat-icon>close</mat-icon>
+</button>
+<div *ngIf="person" class="grid-container mat-typography">
+  <img [src]="person.pictureUrl" class="label" />
+  <h1 class="value">
+    {{person.name}}
+  </h1>
+  <h3 class="label">
+    Age:
+  </h3>
+  <h3 class="value">
+    {{person.age}}
+  </h3>
+  <h3 class="label">
+    Address:
+  </h3>
+  <h3 class="value">
+    {{person.streetAddress}}, {{person.city}} {{person.stateName}} {{person.zip}}
+  </h3>
+  <h3 class="label">
+    Interests:
+  </h3>
+  <mat-chip-list>
+    <mat-chip *ngFor="let interest of person.interests">
+      {{interest.name}}
+    </mat-chip>
+  </mat-chip-list>
+</div>

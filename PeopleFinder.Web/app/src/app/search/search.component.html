@@ -1,21 +1,26 @@
-<div class="search-container">
-  <div class="search-pane">
-    <div class="search-box">
-      <input type="search" [formControl]="searchTerms" />
-    </div>
-    <pf-person-list [people]="peopleList" [scrollToBottom]="onScrollList" [selectedID]="selectedID" (itemSelected)="onItemSelected($event)"></pf-person-list>
-    <div class="overlay" *ngIf="listSpinnerState">
-    </div>
-    <div class="spinner-container" *ngIf="listSpinnerState">
-        <pf-spinner></pf-spinner>
-    </div>
+<div [@componentAnimations]="getComponentState()" class="content-container">
+  <div [@sidePanel]="getComponentState()">
+    <form color="primary" [formGroup]="searchForm">
+      <mat-form-field>
+        <input matInput placeholder="Search..." type="search" formControlName="search" />
+      </mat-form-field>
+      <mat-paginator [id]="'paginator'" [length]="totalResults" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]" [pageIndex]="pageIndex" (page)="handlePageEvent($event)"></mat-paginator>
+    </form>
+    <section name="card-list" [ngClass]="listClasses" *ngIf="getComponentState() !== 'fullScreenDetail'">
+      <mat-card *ngFor="let person of people" class="selectable-card" (click)="selectPerson(person.id)">
+        <mat-card-title>
+          {{person.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{person.city}}, {{person.stateName}}
+        </mat-card-subtitle>
+      </mat-card>
+    </section>
   </div>
-  <div class="details-pane">
-    <pf-person-display [selectedPerson]="selectedPerson"></pf-person-display>
-    <div class="overlay details-overlay" *ngIf="detailsSpinnerState">
-    </div>
-    <div class="spinner-container" *ngIf="detailsSpinnerState">
-        <pf-spinner></pf-spinner>
-    </div>
-  </div>
+  <pf-person [person]="selectedPerson" (close)="closeDetail()" [@detailPanel]="getComponentState()">
+  </pf-person>
 </div>
+<div class="spinner-overlay" *ngIf="spinnerActive">
+  <mat-spinner></mat-spinner>
+</div>
+

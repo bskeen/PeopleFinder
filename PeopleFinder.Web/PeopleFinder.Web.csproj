@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
   </ItemGroup>
 
@@ -21,4 +17,18 @@
     <ProjectReference Include="..\PeopleFinder.Data\PeopleFinder.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\favicon.ico" />
+    <Content Remove="wwwroot\index.html" />
+    <Content Remove="wwwroot\main.js" />
+    <Content Remove="wwwroot\main.js.map" />
+    <Content Remove="wwwroot\polyfills.js" />
+    <Content Remove="wwwroot\polyfills.js.map" />
+    <Content Remove="wwwroot\runtime.js" />
+    <Content Remove="wwwroot\runtime.js.map" />
+    <Content Remove="wwwroot\styles.js" />
+    <Content Remove="wwwroot\styles.js.map" />
+    <Content Remove="wwwroot\vendor.js" />
+    <Content Remove="wwwroot\vendor.js.map" />
+  </ItemGroup>
 </Project>
